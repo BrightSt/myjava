@@ -7,7 +7,11 @@ import com.dms.java.cglib.DaoProxy;
 
 import net.sf.cglib.proxy.Enhancer;
 
-
+/**
+ * cglib 测试类
+ * @author Dong
+ *
+ */
 public class CglibTest {
 	
 	@Test
