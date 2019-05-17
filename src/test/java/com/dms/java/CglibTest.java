@@ -2,8 +2,8 @@ package com.dms.java;
 
 import org.junit.Test;
 
-import com.dms.java.cglib.Dao;
-import com.dms.java.cglib.DaoProxy;
+import com.dms.java.proxy.cglib.Dao;
+import com.dms.java.proxy.cglib.DaoProxy;
 
 import net.sf.cglib.proxy.Enhancer;
 
