@@ -1162,3 +1162,244 @@ public class CountDownLatchDemo {
 
 #### CyclicBarrier
 
+我们假设有这么一个场景，每辆车只能坐4个人，当车满了，就发车
+
+```java
+package com.dms.java.concurrency;
+
+import java.util.concurrent.CyclicBarrier;
+
+/**
+ * CyclicBarrier 使用示例
+ * @author Dong
+ *
+ */
+public class CyclicBarrierDemo {
+
+	public static void main(String[] args) {
+		CyclicBarrier cyclicBarrier = new CyclicBarrier(4,()->{
+			System.out.println("车满了，开始出发。。。");
+		}) ;
+		
+		for (int i = 0; i < 12; i++) {
+			new Thread(()->{
+				
+				System.out.println(Thread.currentThread().getName() + " 开始上车。。。");
+				try {
+					cyclicBarrier.await();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}).start(); 
+		}
+	}
+}
+
+```
+
+输出结果
+
+```
+Thread-1 开始上车。。。
+Thread-5 开始上车。。。
+Thread-9 开始上车。。。
+Thread-3 开始上车。。。
+车满了，开始出发。。。
+Thread-7 开始上车。。。
+Thread-11 开始上车。。。
+Thread-2 开始上车。。。
+Thread-6 开始上车。。。
+车满了，开始出发。。。
+Thread-10 开始上车。。。
+Thread-0 开始上车。。。
+Thread-4 开始上车。。。
+Thread-8 开始上车。。。
+车满了，开始出发。。。
+
+```
+
+CyclicBarrier是可以循环使用的，达到条件后会重置。
+
+#### Semaphore
+
+假设我们有3个停车位，6辆车去抢
+
+```java
+package com.dms.java.concurrency;
+
+import java.util.concurrent.Semaphore;
+/**
+ * 信号量使用示例，多个线程抢占多个资源的情况
+ * @author Dong
+ *
+ */
+public class SemaphoreDemo {
+
+	public static void main(String[] args) {
+		Semaphore semaphore = new Semaphore(3);
+		
+		for (int i=0;i<6;i++) {
+			new Thread(()->{
+				try {
+					semaphore.acquire();
+					System.out.println(Thread.currentThread().getName() + " 获取车位。。。");
+					Thread.sleep(3000);
+					System.out.println(Thread.currentThread().getName() + " 离开车位...");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}finally {
+					semaphore.release();
+				}
+				
+			}).start(); 
+			
+		}
+
+	}
+
+}
+
+```
+
+输出结果
+
+```
+Thread-2 获取车位。。。
+Thread-1 获取车位。。。
+Thread-5 获取车位。。。
+Thread-2 离开车位...
+Thread-5 离开车位...
+Thread-1 离开车位...
+Thread-3 获取车位。。。
+Thread-0 获取车位。。。
+Thread-4 获取车位。。。
+Thread-0 离开车位...
+Thread-4 离开车位...
+Thread-3 离开车位...
+
+```
+
+### 7.阻塞队列你知道吗？
+
+#### 阻塞队列有哪些
+
+* **ArrayBlockingQueue:** 是一个基于数组结构的有界阻塞队列，此队列按FIFO(先进先出)对元素进行排序
+* **LinkedBlockingQueue：**是一个基于链表结构的阻塞队列，此队列按FIFO对元素进行排序，吞吐量通常高于ArrayBlockingQueue。
+* **SynchronousQueue:** 是一个不存储元素的阻塞队列，每个插入操作必须等待到另一个线程调用移除操作，否则插入操作一直处于阻塞状态吗，吞吐量通常高于LinkedBlockingQueue。
+
+#### 什么是阻塞队列
+
+![](blockingqueue.png)
+
+* 阻塞队列，顾名思义，首先它是一个队列，而一个阻塞队列在数据结构中所起的作用大致如图所示
+* 当阻塞队列是空时，从队列中获取元素的操作将会被阻塞
+* 当阻塞队列是满时，往队列里添加元素的操作将会被阻塞
+* 核心方法
+
+| 方法\行为 | 抛异常    | 特定的值 | 阻塞   | 超时               |
+| --------- | --------- | -------- | ------ | ------------------ |
+| 插入方法  | add(e)    | offer(e) | put(e) | offer(e,time,unit) |
+| 移除方法  | remove()  | poll()   | take() | poll(time,unit)    |
+| 检查方法  | element() | peek()   | 不可用 | 不可用             |
+
+* 行为解释
+  * 抛异常：如果操作不能马上进行，则抛出异常
+  * 特定的值：如果操作不能马上进行，将会返回一个特殊的值，一般是true或者false
+  * 阻塞：如果操作不能马上进行，操作会被阻塞
+  * 超时：如果操作不能马上进行，操作会被阻塞指定的时间，如果指定时间没执行，则返回一个特殊值，一般是true或者false
+
+* 插入方法
+  * add(E e): 添加成功返回true，失败抛IllegalStateException异常
+  * offer(E e):成功返回true，如果队列已满，则返回false
+  * put(E e): 将元素插入此队列的尾部，如果该队列已满，则返回false
+
+* 删除方法
+  * remove(Object o): 移除指定元素，成功返回true，失败返回false
+  * poll(): 获取并移除此队列的头元素，若队列为空，则返回null
+  * take(): 获取并移除此队列的头元素，若没有元素则一直阻塞。
+
+* 检查方法
+  * element(): 获取但不移除此队列的头元素，没有元素则抛异常
+  * peek(): 获取但不移除此队列的头元素，若队列为空，则返回null
+
+#### SynchronousQueue
+
+SynchronousQueue,实际上它不是一个真正的队列，因为他不会为队列中元素维护存储空间。与其他队列不同的是，他维护一组线程，这些线程在等待着把元素加入或移除队列。
+
+```java
+package com.dms.java.concurrency;
+
+import java.util.concurrent.SynchronousQueue;
+
+/**
+ *  SynchronousQueue 使用示例
+ * @author Dong
+ *
+ */
+public class SynchronousQueueDemo {
+	public static void main(String[] args) {
+		SynchronousQueue<Integer> synchronousQueue = new SynchronousQueue<>();
+		
+		new Thread(()->{
+			try {
+				synchronousQueue.put(1);
+				Thread.sleep(3000);
+				synchronousQueue.put(2);
+				Thread.sleep(3000);
+				synchronousQueue.put(3);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}).start(); 
+		
+		new Thread(()->{
+			try {
+				Integer val = synchronousQueue.take();
+				System.out.println(val);
+				
+				Integer val2 = synchronousQueue.take();
+				System.out.println(val2);
+				
+				Integer val3 = synchronousQueue.take();
+				System.out.println(val3);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}).start(); 
+	}
+}
+
+```
+
+#### 使用场景
+
+* 生产者消费者模式
+* 线程池
+* 消息中间件
+
+### 8.synchronized和Lock有什么区别？
+
+* 原始结构
+  * synchronized 是关键字属于JVM层面，反应在字节码上是monitorenter和monitorexit,其底层是通过monitor对象来完成，其实wait/notify等方法也是依赖monitor对象只有在同步块或方法中才能调用wait/notify等方法。
+  * Lock是具体类（java.util.concurrent.locks.Lock）是api层面的锁
+
+* 使用方法
+  * synchronized 不需要用户手动去释放锁，当synchronized代码执行完成后系统会自动让线程释放对锁的占有
+  * ReentrantLock则需要用户手动的释放锁，若没有主动释放锁，可能导致出现死锁的现象，lock()和unlock()方法需要配合try/finally语句来完成。
+
+* 等待是否可中断
+  * synchronized 不可中断，除非抛出异常或者正常运行完成
+  * ReentrantLock 可中断，设置超时方法tryLock(long timeout,TimeUnit unit)，lockInterruptibly()放代码块中，调用interrupt()方法可中断。
+
+* 加锁是否公平
+  * synchronized 非公平锁
+  * ReentrantLock 默认非公平锁，构造方法占用可以传入boolean值，true为公平锁，false为非公平锁
+
+* 锁可以绑定多个Condition
+  * synchronized 没有Condition
+  * ReentrantLock 用来实现分组唤醒需要唤醒的线程们，可以精确唤醒，而不是像synchronized要么随机唤醒一个线程要么唤醒全部线程。
+
+### 9.线程池用过吗？谈谈对ThreadPoolExector的理解
+
+#### 为什么使用线程池，线程池的优势
+
