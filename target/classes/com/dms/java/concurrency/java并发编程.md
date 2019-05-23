@@ -1374,7 +1374,373 @@ public class SynchronousQueueDemo {
 #### 使用场景
 
 * 生产者消费者模式
+
+  * 代码示例（使用lock + condition 实现）
+
+  ```java
+  package com.dms.java.concurrency;
+  
+  import java.util.concurrent.locks.Condition;
+  import java.util.concurrent.locks.Lock;
+  import java.util.concurrent.locks.ReentrantLock;
+  
+  /**
+   * 
+   * @author Dong
+   * 要求：一个初始值为零的变量，两个线程对其交替操作，一个加1一个减1，来5轮
+   * 线程     操作		资源类
+   * 判断	干活		通知
+   * 防止虚假唤醒机制 多线程下的判断用while:原因：
+   * 如果使用if，满足条件了会在if里面就阻塞，如果被其他线程唤醒了不会再次判断，直接往下面执行了，在多线程下就有可能
+   *出问题(number加到2)；如果使用while在被唤醒后，还会再次进入while的判断，保证准确性。
+   * 
+   */
+  public class ProdConsumer_TraditionDemo {
+  	
+  	public static void main(String[] args) {
+  		ShareData shareData = new ShareData();
+  		
+  		new Thread(()->{
+  			for(int i=0;i<5;i++) {
+  				try {
+  					shareData.increment();
+  				} catch (Exception e) {
+  					e.printStackTrace();
+  				}
+  			}
+  		},"AA").start(); 
+  		
+  		new Thread(()->{
+  			for(int i=0;i<5;i++) {
+  				try {
+  					shareData.decrement();
+  				} catch (Exception e) {
+  					e.printStackTrace();
+  				}
+  			}
+  		},"BB").start(); 
+  		
+  		new Thread(()->{
+  			for(int i=0;i<5;i++) {
+  				try {
+  					shareData.increment();
+  				} catch (Exception e) {
+  					e.printStackTrace();
+  				}
+  			}
+  		},"CC").start(); 
+  		
+  		new Thread(()->{
+  			for(int i=0;i<5;i++) {
+  				try {
+  					shareData.decrement();
+  				} catch (Exception e) {
+  					e.printStackTrace();
+  				}
+  			}
+  		},"DD").start(); 
+  		
+  	}
+  	
+  }
+  
+  class ShareData{
+  	private int number = 0; // 多线程下为什么没有加volatile？ 使用了lock
+  	private Lock lock = new ReentrantLock();
+  	private Condition condition = lock.newCondition();
+  	
+  	/**
+  	 * 增加操作
+  	 * @throws Exception
+  	 */
+  	public void increment() throws Exception{
+  		try {
+  			lock.lock();
+  			// 1.判断
+  			while(number != 0) {
+  				// 等待
+  				condition.await(); // 阻塞，并且释放资源
+  			}
+  			number++;
+  			System.out.println(Thread.currentThread().getName() + "\t" +number);
+  			// 3.通知唤醒
+  			condition.signalAll();
+  		} finally {
+  			lock.unlock();
+  		}
+  		
+  	}
+  	
+  	/**
+  	 * 减操作
+  	 * @throws Exception
+  	 */
+  	public void decrement() throws Exception{
+  		try {
+  			lock.lock();
+  			// 1.判断
+  			while(number == 0) {
+  				// 等待
+  				condition.await();
+  			}
+  			number--;
+  			System.out.println(Thread.currentThread().getName() + "\t" +number);
+  			// 3.通知唤醒
+  			condition.signalAll();
+  		} finally {
+  			lock.unlock();
+  		}
+  		
+  	}
+  }
+  
+  ```
+
+  * 代码示例（3.0版 使用阻塞队列）
+
+  ```java
+  package com.dms.java.concurrency;
+  
+  import java.util.concurrent.ArrayBlockingQueue;
+  import java.util.concurrent.BlockingQueue;
+  import java.util.concurrent.TimeUnit;
+  import java.util.concurrent.atomic.AtomicInteger;
+  
+  /**
+   * @author Dong
+   * volatile/CAS/atomicInteger/BlockQueue/线程交互/原子引用
+   */
+  public class ProdConsumer_BlockQueueDemo {
+  	
+  	public static void main(String[] args) throws Exception {
+  		MyResource myResource = new MyResource(new ArrayBlockingQueue<>(10));
+  		
+  		new Thread(()->{
+  			System.out.println(Thread.currentThread().getName() + "\t 生产线程1启动");
+  			try {
+  				Thread.sleep(3000);
+  				myResource.myProd();
+  			} catch (Exception e) {
+  				e.printStackTrace();
+  			}
+  		},"prod1").start(); 
+  		Thread.sleep(1000);
+  		new Thread(()->{
+  			System.out.println(Thread.currentThread().getName() + "\t 生产线程2启动");
+  			try {
+  				Thread.sleep(3000);
+  				myResource.myProd();
+  			} catch (Exception e) {
+  				e.printStackTrace();
+  			}
+  		},"prod2").start(); 
+  		Thread.sleep(1000);
+  		new Thread(()->{
+  			System.out.println(Thread.currentThread().getName() + "\t 消费线程启动");
+  			System.out.println();
+  			System.out.println();
+  			System.out.println();
+  			try {
+  				myResource.myConsumer();
+  			} catch (Exception e) {
+  				e.printStackTrace();
+  			}
+  		},"Consumer").start(); 
+  		
+  		try {
+  			Thread.sleep(5000);
+  		} catch (InterruptedException e) {
+  			e.printStackTrace();
+  		}
+  		
+  		System.out.println();
+  		System.out.println();
+  		System.out.println();
+  		System.out.println("5秒钟时间到，main线程叫停！活动结束");
+  		myResource.stop();
+  	}
+  }
+  
+  class MyResource{
+  	private volatile boolean FLAG = true; // 默认开启 生产者+消费者
+  	private AtomicInteger atomicInteger = new AtomicInteger();
+  	
+  	// 面向接口编程
+  	BlockingQueue<String> blockingQueue = null;
+  
+  	// 参数传接口
+  	public MyResource(BlockingQueue<String> blockingQueue) { 
+  		this.blockingQueue = blockingQueue;
+  		System.out.println(blockingQueue.getClass().getName());
+  	}
+  	
+  	public void myProd() throws Exception{
+  		String data = null;
+  		boolean retValue;
+  		while(FLAG) {
+  			data = atomicInteger.incrementAndGet()+"";
+  			retValue = blockingQueue.offer(data,2L,TimeUnit.SECONDS);
+  			if(retValue) {
+  				System.out.println(Thread.currentThread().getName() + "\t 插入队列"+data +"成功");
+  			}else {
+  				System.out.println(Thread.currentThread().getName() + "\t 插入队列"+data +"失败");
+  			}
+  			TimeUnit.SECONDS.sleep(1);
+  		}
+  		System.out.println(Thread.currentThread().getName() +"\t 大老板叫停了，表示FLAG=false,生产动作结束");
+  	}
+  	
+  	public void myConsumer() throws Exception{
+  		String result = null;
+  		while(true) {
+  			result = blockingQueue.poll(2L,TimeUnit.SECONDS);
+  			if(null == result || result.equalsIgnoreCase("")) {
+  				FLAG = false;
+  				System.out.println(Thread.currentThread().getName() + "\t 超过2秒钟没有取到蛋糕，消费退出");
+  				System.out.println();
+  				System.out.println();
+  				return;
+  			}
+  			System.out.println(Thread.currentThread().getName() + "\t 消费队列"+ result +"成功");
+  			TimeUnit.SECONDS.sleep(2);
+  		}
+  	}
+  	
+  	public void stop() {
+  		this.FLAG = false;
+  	}
+  	
+  	
+  }
+  
+  ```
+
+  
+
+  * 代码示例（精确唤醒 lock + 多个condition 实现）
+
+  ```java
+  package com.dms.java.concurrency;
+  
+  import java.util.concurrent.locks.Condition;
+  import java.util.concurrent.locks.Lock;
+  import java.util.concurrent.locks.ReentrantLock;
+  
+  /**
+   * 
+   * @author Dong
+   * 要求：多线程之间按顺序调用，实现A->B->C三个线程启动，要求如下：
+   * AA打印5次，BB打印5次，CC打印5次
+   * 紧接着
+   * AA打印5次，BB打印5次，CC打印5次
+   * ....
+   * 循环10轮
+   */
+  public class SyncAndReentrantLockDemo {
+  	
+  	public static void main(String[] args) {
+  		ShareResource shareResource = new ShareResource();
+  		
+  		new Thread(()->{
+  			for(int i=1;i<=10;i++) {
+  				shareResource.print5();
+  			}
+  		},"A").start(); 
+  		
+  		new Thread(()->{
+  			for(int i=1;i<=10;i++) {
+  				shareResource.print10();
+  			}
+  		},"B").start(); 
+  		
+  		new Thread(()->{
+  			for(int i=1;i<=10;i++) {
+  				shareResource.print15();
+  			}
+  		},"C").start();
+  	}
+  	
+  }
+  
+  class ShareResource{
+  	private int number = 1;// A:1 B:2 C:3
+  	private Lock lock = new ReentrantLock();
+  	private Condition condition1 = lock.newCondition();
+  	private Condition condition2 = lock.newCondition();
+  	private Condition condition3 = lock.newCondition();
+  	
+  	public void print5() {
+  		lock.lock();
+  		try {
+  			// 1.判断
+  			while(number != 1) {
+  				condition1.await();
+  			}
+  			// 2.干活
+  			for(int i=1;i<=5;i++) {
+  				System.out.println(Thread.currentThread().getName() + "\t" + i);
+  			}
+  			// 3.通知
+  			number = 2;
+  			condition2.signal();
+  		}catch (Exception e) {
+  			e.printStackTrace();
+  		} finally {
+  			lock.unlock();
+  		}
+  	}
+  	
+  	public void print10() {
+  		lock.lock();
+  		try {
+  			// 1.判断
+  			while(number != 2) {
+  				condition2.await();
+  			}
+  			// 2.干活
+  			for(int i=1;i<=5;i++) {
+  				System.out.println(Thread.currentThread().getName() + "\t" + i);
+  			}
+  			// 3.通知
+  			number = 3;
+  			condition3.signal();
+  		}catch (Exception e) {
+  			e.printStackTrace();
+  		} finally {
+  			lock.unlock();
+  		}
+  	}
+  	
+  	public void print15() {
+  		lock.lock();
+  		try {
+  			// 1.判断
+  			while(number != 3) {
+  				condition3.await();
+  			}
+  			// 2.干活
+  			for(int i=1;i<=5;i++) {
+  				System.out.println(Thread.currentThread().getName() + "\t" + i);
+  			}
+  			// 3.通知
+  			number = 1;
+  			condition1.signal();
+  		}catch (Exception e) {
+  			e.printStackTrace();
+  		} finally {
+  			lock.unlock();
+  		}
+  	}
+  	
+  	
+  }
+  
+  ```
+
+  
+
 * 线程池
+
 * 消息中间件
 
 ### 8.synchronized和Lock有什么区别？
@@ -1401,5 +1767,208 @@ public class SynchronousQueueDemo {
 
 ### 9.线程池用过吗？谈谈对ThreadPoolExector的理解
 
+#### 创建线程的几种方式
+
+* 继承Thread类
+
+* 实现Runnable接口
+
+* 实现Callable接口
+
+  ```java
+  package com.dms.java.concurrency;
+  
+  import java.util.concurrent.Callable;
+  import java.util.concurrent.ExecutionException;
+  import java.util.concurrent.FutureTask;
+  
+  /**
+   * 
+   * @author Dong
+   * Callable 使用示例
+   * fork join 拆分->汇总
+   *
+   */
+  public class CallableDemo {
+  
+  	public static void main(String[] args) throws InterruptedException, ExecutionException {
+  		
+  		FutureTask<Integer> futureTask = new FutureTask<>(new MyThread());
+  		
+  		new Thread(futureTask,"AA").start();
+  		new Thread(futureTask,"BB").start();// 不会进入同一个MyThread对象，会复用结果
+  		// int result02 = futureTask.get(); // 如果直接放在start后面，会阻塞main线程的执行，会等出来结果后往下执行。
+  		
+  		int result01 = 100;
+  		int result02 = futureTask.get();// 建议放在最后  原因是：这样就不会阻塞main线程的执行。  
+  		
+  		System.out.println("*****result:" + (result01+result02));
+  	}
+  
+  }
+  
+  class MyThread implements Callable<Integer>{
+  
+  	@Override
+  	public Integer call() throws Exception {
+  		System.out.println("coming in callable...");
+  		return 1024;
+  	}
+  	
+  }
+  ```
+
+  
+
+* 使用线程池
+
 #### 为什么使用线程池，线程池的优势
 
+线程池做的工作主要是控制运行的线程的数量，处理过程中将任务放入队列，然后在线程创建后启动这些任务，如果线程数量超过了最大数量，超出数量的线程排队等候，等其他线程执行完毕，再从队列中取出任务来执行。
+
+他的主要特点为：线程复用、控制最大并发量、管理线程
+
+* 降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗
+* 提高响应速度。当任务到达时，任务可以不需要等待线程创建就能立即执行。
+* 提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。
+
+#### 线程池如何使用
+
+* 架构说明
+
+  ![](ThreadPool.jpg)
+
+* 编码实现
+
+  * Executors.newSingleThreadExecutor():只有一个线程的线程池，因此所有提交的任务是顺序执行。
+  * Executors.newCacheThreadPool():线程池里面有很多线程需要同时执行，老的可用线程将被新的任务触发重新执行，如果线程超过60秒没有执行，那么将被终止并从池中删除。
+  * Executors.newFixedThreadPool(): 拥有固定线程数的线程池，如果没有任务执行，那么线程会一直等待。
+  * Executors.newScheduledThreadPool():用来调度即将执行的任务的线程池
+  * Executors.newWorkStealingPool():适合使用在很耗时的操作，但是newWorkStealingPool不是ThreadPoolExecutor的扩展，他是新的线程类ForkJoinPool的扩展，但是都是统一的一个Executors类中实现，由于能够合理的使用CPU进行对任务操作，所以适合使用在很耗时的任务中。
+
+  ##### ThreadPoolExecutor：
+
+  ThreadPoolExecutor作为java.util.concurrent包对外提供基础实现，以内部线程池的形式对外提供管理任务执行，线程调度，线程池管理等等服务。
+
+  ##### 线程池的几个重要参数介绍？
+
+  | 参数                     | 作用                                                         |
+  | ------------------------ | ------------------------------------------------------------ |
+  | corePoolSize             | 核心线程池大小                                               |
+  | maximumPoolSize          | 最大线程池大小                                               |
+  | keepAliveTime            | 线程池中超过corePoolSize数目的空闲线程最大存活时间           |
+  | TimeUnit                 | keepAliveTime时间单位                                        |
+  | workQueue                | 阻塞任务队列                                                 |
+  | threadFactory            | 新建任务工厂                                                 |
+  | RejectedExecutionHandler | 当提交任务数超过maximumPoolSize+workQueue之和时，任务会交给RejectedExecutionHandler处理 |
+
+  线程池的底层工作原理？
+
+  ![](threadpoolflow.jpg)
+
+  1.在创建了线程池后，等待提交过来的任务请求
+
+  2.当调用execute()方法添加一个请求任务时，线程池会做如下判断：
+
+  ​	2.1 如果正在运行的线程数量小于corePoolSize，那么马上创建线程运行这个任务；
+
+  ​	2.2 如果正在运行的线程数量大于或等于corePoolSize，那么将这个任务放入队列；
+
+  ​	2.3 如果这时候队列满了且正在运行的线程数量还小于maximumPoolSize，那么还是要创建非核心线程立刻运行这个任务；
+
+  ​	2.4 如果队列满了且正在运行的线程数量大于或等于maximumPoolSize，那么线程池会启动饱和拒绝策略来执行
+
+  3.当一个线程完成任务时，它会从队列中取下一个任务来执行
+
+  4.当一个线程无事可做超过一定的时间（keepAliveTime）时，线程池会判断：
+
+  ​	如果当前运行的线程数大于corePoolSize，那么这个线程就被停掉
+
+  ​	所以线程池的所有任务完成后他最终会收缩到corePoolSize的大小
+
+  #### 线程池用过没？生产上你如何配置合理参数？
+
+  ##### 线程池的拒绝策略你谈谈？
+
+  * 是什么
+    * 等待队列已经满了，再也塞不下新的任务，同时线程池中的线程数也达到了最大线程数，无法继续为新任务服务了。
+
+  * jdk内置的四种拒绝策略
+    * AbortPolicy（默认）:直接抛出RejectedExecutionException异常阻止系统正常运行
+    * CallerRunsPolicy:“调用者运行”一种调节机制，该策略不会抛弃任务，也不会抛出异常，而是将某些任务回退到调用者，从而降低新的任务流量。
+    * DiscardPolicy：直接抛弃任务，不予任务处理也不抛出异常。如果允许任务丢失，这是最好的方式
+    * DiscardOldestPolicy：抛弃队列中等待最久的任务，然后把当前任务加入队列中尝试再次提交当前任务。
+
+#### 你在工作中SingleThreadExecutor、FixedThreadPool、CachedThreadPool的三种创建线程池的方法，你用哪个多，超级坑
+
+**一个都不用，用自定义的**
+
+在《阿里巴巴Java开发手册》中对线程池的创建有一条：
+
+> 线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。
+>
+> 说明：Executors返回的线程池对象的弊端如下：
+>
+> 1.FixedThreadPool和singleThreadPool：
+>
+> ​	允许请求队列长度为Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
+>
+> 2.CacheThreadPool和ScheduledThreadPool：
+>
+> ​	允许的创建线程数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致OOM
+
+##### 自定义线程池代码
+
+```java
+package com.dms.java.concurrency;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+/**
+ *  自定义线程池
+ * @author Dong
+ *
+ */
+public class MyThreadPoolDemo {
+
+	public static void main(String[] args) {
+		
+		ExecutorService threadPool = new ThreadPoolExecutor(
+										2, 
+										5, 
+										1L, 
+										TimeUnit.SECONDS, 
+										new LinkedBlockingQueue<Runnable>(3),
+										Executors.defaultThreadFactory(),
+										new ThreadPoolExecutor.DiscardPolicy()); // 显示不同策略的效果
+		try {
+			
+			for (int i = 1; i <= 10; i++) {
+				threadPool.execute(()->{
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(Thread.currentThread().getName() + "\t办理业务");
+					
+				});
+			}
+			
+		} finally {
+			threadPool.shutdown();
+		}
+	}
+
+}
+
+```
+
+##### 合理配置线程池你是如何考虑的？
+
+* CPU密集型
+* IO密集型
