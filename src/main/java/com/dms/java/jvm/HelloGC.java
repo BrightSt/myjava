@@ -11,7 +11,9 @@ package com.dms.java.jvm;
 public class HelloGC {
 	
 	public static void main(String[] args) {
-		 byte[] bytes = new byte[20 * 1024 * 1024];
+		 System.out.println("=============hello gc=======");
+		 //byte[] byteArray = new byte[50*1024*1024];
+		 System.out.println(512*8);
 	}
 
 }

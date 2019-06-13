@@ -1,6 +1,5 @@
 package com.dms.java.concurrency;
 
-import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 
 /**
