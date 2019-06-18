@@ -97,7 +97,7 @@
     * -Xms 等价于 -XX：InitialHeapSize
     * -Xmx 等价于 -XX:MaxHeapSize
 
-#### 盘点家底查看JVM默认值
+#### 4.盘点家底查看JVM默认值
 
 * 查看初始默认值： -XX:+PrintFlagsInitial
 
@@ -113,7 +113,7 @@
 
   ![](printcommandlineflags.png)
 
-#### 你平时工作用过的JVM常用基本配置参数有哪些
+#### 5.你平时工作用过的JVM常用基本配置参数有哪些
 
 * -Xms
   * 初始大小内存，默认为物理内存的1/64
@@ -203,7 +203,7 @@
   
   * 设置垃圾最大年龄
 
-#### 强引用、软引用、弱引用和虚引用分别是什么
+#### 6.强引用、软引用、弱引用和虚引用分别是什么
 
 在java语言中，除了基本数据类型外，其他的都是指向各类对象的对象引用；java中根据其生命周期的长短，讲引用分为4类。
 
@@ -433,7 +433,7 @@
   
     * 应用场景： 可用来跟踪对象被垃圾回收器回收的活动，当一个虚引用关联的对象被垃圾收集器回收之前会受到一条系统通知。
 
-#### 请谈谈你对OOM的理解
+#### 7.请谈谈你对OOM的理解
 
 * java异常类图
 
@@ -696,17 +696,162 @@
       * 静态变量
       * 即时编译后的代码
 
-#### GC垃圾回收算法和垃圾收集器的关系？谈谈你的理解？
+#### 8.GC垃圾回收算法和垃圾收集器的关系？谈谈你的理解？
 
 * 四种GC垃圾回收算法
-  * 引用计数
-  * 复制回收
+  * 分代收集算法
+  
+    * 当前商业虚拟机的垃圾收集都采用“分代收集”算法，这种算法并没有什么新的思想，只是根据对象存活周期的不同讲内存划分为几块。一般是把java堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。而老年代中因为对象存活率高、没有额外空间对他进行分配担保，就必须使用“标记-清除”或者“标记-整理”算法来进行回收。
+  
+* 复制回收
+  
+    算法图：
+  
+    ![](copy.png)
+  
   * 标记清除
+  
+    算法图：
+  
+    ![](mark-sweep.png)
+  
   * 标记整理
+  
+    算法示意图：
+  
+    ![](mark-compact.png)
+  
+* GC算法是内存回收的方法论，垃圾收集器就是算法落实的实现
 
-* GC算法是内存回收的方法论，垃圾收集就是算法落实的实现
+* 如何查看默认的垃圾收集器
+
+  * java -XX:+PrintCommandLineFlags -version
+
+    ![](printcommandlineflags.png)
+
+    可以看出java8 默认采用的垃圾回收器为：ParallelGC 
 
 * 目前为止还没有完美的收集器的出现，更加没有万能的收集器，只是针对具体应用最合适的收集器，进行分代收集。
 
   ![](GCCompare.png)
 
+* 串行垃圾回收器(Serial)
+  
+* 它为单线程环境设计且只使用一个线程进行垃圾回收，会暂停所有的用户线程，所以不适合服务环境。
+  
+* 并行垃圾回收器(Parallel)
+  
+* 多个垃圾收集线程并行工作，此时用户线程是暂停的，用于科学计算、大数据处理等弱交互场景。
+  
+* 并发垃圾回收器（CMS）
+  
+* 用户线程和垃圾收集线程同时执行（不一定是并行，可能是交替执行），不需要停顿用户线程，互联网公司多用它，适用对响应时间有要求的场景
+
+* 注：关于GC的一些术语![](GC术语.png)
+
+  ![](GC术语2.png)
+
+* G1垃圾回收器
+
+  * G1垃圾回收器将堆内存分割成不同的区域然后并发的对其进行垃圾回收。
+
+#### 9.怎么查看服务器默认垃圾收集器是哪个？生产是如何配置垃圾收集器？谈谈你对垃圾收集器的理解？
+
+* 怎么查看服务器默认垃圾收集器是哪个？
+  * java -XX:+PrintCommandLineFlags -version
+
+* java的GC回收类型主要有：、
+  * UseSerialGC ， UseParallelGC , UseConcMarkSweepGC , UseParNewGC , UseParallelOldGC , UseG1GC
+  * java8以后基本不使用Serial Old
+
+* 垃圾收集器(在一个代配置后，另一个代会默认配置关联。例如在新生代配置了Serial,在老年代就会使用Serial Old)
+
+  ![](GCP.jpg)
+
+* 参数说明
+  * DefNew: Default New Generation
+  * Tenured: Old​
+  * ParNew: Parallel New Generation
+  * PSYoungGen: Parallel Scavenge
+  * ParOldGen: Parallel Old Scavenge
+
+* Server/Client 模式分别是什么意思
+
+  * 如何查看使用了什么模式：
+
+    ![](gcserver.png)
+
+  
+
+  - - 最主要的差别在于：-Server模式启动时，速度较慢，但是一旦运行起来后，性能将会有很大的提升。
+    - 当虚拟机运行在-client模式的时候，使用的是一个代号为C1的轻量级编译器, 而-server模式启动的虚拟机采用相对重量级，代号为C2的编译器，C2比C1编译器编译的相对彻底，服务起来之后,性能更高。
+    - 所以通常用于做服务器的时候我们用服务端模式，如果你的电脑只是运行一下java程序，就客户端模式就可以了。当然这些都是我们做程序优化程序才需要这些东西的，普通人并不关注这些专业的东西了。其实服务器模式即使编译更彻底，然后垃圾回收优化更好，这当然吃的内存要多点相对于客户端模式。
+
+* 新生代
+
+  * 串行GC（Serial/Serital Copying）
+
+    * 一句话：一个单线程的收集器，在进行垃圾收集时候，必须暂停其他所有的工作线程直到它收集结束。
+
+      ![](SerialGC.png)
+
+      * 串行收集器是最古老，最稳定以及效率高的收集器，只使用一个线程去回收但其在进行垃圾收集过程中可能会产生较长的停顿(Stop-The-World状态)。虽然在收集垃圾过程中需要暂停所有其他的工作线程，但是它简单高效，对于限定单个CPU环境来说，没有线程交互的开销可以或得最高的单线程垃圾收集效率，因此Serial垃圾收集器依然是java虚拟机运行在client模式下默认的新生代垃圾收集器。
+
+      * 对应JVM参数是：-XX：+UseSerialGC
+
+        开启后会使用：Serial(Young区用)+Serial Old(Old区用)的收集器组合
+
+        表示：新生代、老年代都会使用串行回收收集器，新生代使用复制算法，老年代使用标记-整理算法
+
+        ```java
+        -Xms10m -Xmx10m -XX:+PrintGCDetails -XX:+UseSerialGC
+        ```
+
+        打印：
+
+        ```
+        Heap
+         def new generation   total 3072K, used 103K [0x00000000ff600000, 0x00000000ff950000, 0x00000000ff950000)
+          eden space 2752K,   3% used [0x00000000ff600000, 0x00000000ff619cb8, 0x00000000ff8b0000)
+          from space 320K,   0% used [0x00000000ff900000, 0x00000000ff900000, 0x00000000ff950000)
+          to   space 320K,   0% used [0x00000000ff8b0000, 0x00000000ff8b0000, 0x00000000ff900000)
+         tenured generation   total 6848K, used 520K [0x00000000ff950000, 0x0000000100000000, 0x0000000100000000)
+           the space 6848K,   7% used [0x00000000ff950000, 0x00000000ff9d20a0, 0x00000000ff9d2200, 0x0000000100000000)
+         Metaspace       used 2690K, capacity 4486K, committed 4864K, reserved 1056768K
+          class space    used 289K, capacity 386K, committed 512K, reserved 1048576K
+        ```
+
+        
+
+  * 并行GC （ParNew）
+
+    * 一句话：使用多线程进行垃圾回收，在垃圾收集时，会stop-the-world暂停其他所有的工作线程直到它收集结束。
+
+      ![](ParellelGc.png)
+
+      * ParNew(并行)收集器其实就是Serial收集器新生代的并行多线程版本，最常见的应用场景是配合老年代的CMS GC工作，其余的行为和Serial收集器完全一样，ParNew垃圾收集器在垃圾收集过程中同样也要暂停所有其他的工作线程。它是很多java虚拟机运行在Server模式下新生代的默认垃圾收集器。
+
+      * 常用对应JVM参数：-XX：+UseParNewGC 启用ParNew收集器，只影响新生代的收集，不影响老年代。开启后，会使用：ParNew（Young区用）+Serial Old的收集器组合，新生代使用复制算法，老年代采用标记-整理算法。但是，ParNew()+Tenured这样的搭配，java8已经不再被推荐，配置后会有如下提示：
+
+        ```java
+        Java HotSpot(TM) 64-Bit Server VM warning: Using the ParNew young collector with the Serial old collector is deprecated and will likely be removed in a future release
+        ```
+
+        
+
+  * 并行回收GC（Parallel）/ (Parallel Scavenge)
+
+    ![](ParellelScGC.png)
+
+    Parallel Scavenge收集器类似ParNew也是一个新生代垃圾收集器，使用复制算法，也是一个并行的多线程的垃圾收集器，俗称吞吐量优先收集器。一句话：串行收集器在新生代和老年代的并行化。
+
+    它重点关注的是：
+
+    ​	可控制的吞吐量（Thoughput=运行用户代码时间/(运行用户代码时间+垃圾收集时间),也即比如程序运行100分钟，垃圾收集时间1分钟，吞吐量就是99%）。高吞吐量意味着高效利用CPU的时间，它多用于在后台运算而不需要太多交互的任务。
+
+    ​	自适应调节策略也是ParallelScavenge收集器与ParNew收集器的一个重要区别。自适应调节策略：虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间(-XX:MaxGCPauseMillis)或最大的吞吐量。
+
+    ​	常用JVM参数：-XX:+UseParallelGC或-XX:+UseParallelOldGC（可互相激活）使用Parallel Scanvenge收集器。
+
+* 老年代
+  * CMS
