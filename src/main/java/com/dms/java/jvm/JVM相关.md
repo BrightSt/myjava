@@ -441,7 +441,7 @@
 
 * 常见的几种OOM异常
 
-  * **java.lang.StackOverflowError**
+  * **java.lang.StackOverflowError**(产生原因：线程请求的栈深度大于虚拟机所允许的深度)
 
     在一个函数中调用自己就会产生这个错误
 
@@ -483,7 +483,7 @@
 
     
 
-  * **java.lang.OutOfMemoryError: Java heap space**
+  * **java.lang.OutOfMemoryError: Java heap space**（虚拟机扩展时申请不到足够的内存）
 
     堆空间满了（大对象，创建很多对象）
 
@@ -758,8 +758,9 @@
 #### 9.怎么查看服务器默认垃圾收集器是哪个？生产是如何配置垃圾收集器？谈谈你对垃圾收集器的理解？
 
 * 怎么查看服务器默认垃圾收集器是哪个？
-  * java -XX:+PrintCommandLineFlags -version
-
+  
+* java -XX:+PrintCommandLineFlags -version
+  
 * java的GC回收类型主要有：、
   * UseSerialGC ， UseParallelGC , UseConcMarkSweepGC , UseParNewGC , UseParallelOldGC , UseG1GC
   * java8以后基本不使用Serial Old
@@ -854,4 +855,180 @@
     ​	常用JVM参数：-XX:+UseParallelGC或-XX:+UseParallelOldGC（可互相激活）使用Parallel Scanvenge收集器。
 
 * 老年代
-  * CMS
+  
+  * CMS（大型互联网公司基本会使用CMS）
+  
+    CMS收集器（Concurrent Mark Sweep:并发标记清除）是一种以获取最短回收停顿时间为目标的收集器。
+  
+    适合应用在互联网站或者B/S系统的服务器上，这类应用尤其重视服务器的响应速度。希望系统停顿时间最短。
+  
+    CMS非常适合堆内存大、CPU核数多的服务器端应用，也是G1出现之前大型应用的首选收集器。
+  
+    ![](CMS.png)
+  
+    Concurrent Mark Sweep 并发标记清除，并发收集低停顿，并发指的是与用户线程一起执行。
+  
+    开启该收集器的JVM参数：-XX:+UseConcMarkSweepGC 开启该参数后会自动讲-XX:+UseParNewGC打开
+  
+    开启该参数后，使用ParNew（Young区用）+CMS（Old区用）+Serial Old的收集器组合，Serial Old讲作为CMS出错的后备收集器。
+  
+    ```
+    -Xms10m -Xmx10m -XX:+PrintGCDetails -XX:+UseConcMarkSweepGC
+    ```
+  
+    * 步骤分析：
+  
+      * 初始标记（CMS initial mark）
+  
+        只是标记一下GC Roots能直接关联的对象，速度很快，仍然需要暂停所有的工作线程。
+  
+      * 并发标记（CMS concurrent mark）和用户线程一起
+  
+        进行GC Roots跟踪的过程，和用户线程一起工作，不需要暂停工作线程。主要标记过程，标记全部对象。
+  
+      * 重新标记（CMS remark）
+  
+        为了修正在并发标记期间，因用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，仍然需要暂停所有的工作线程。由于并发标记时，用户线程依然运行，因此在正式清理前，再做修正。
+  
+      * 并发清除(CMS concurrent sweep)和用户线程一起
+  
+        清除GC Roots不可达对象，和用户线程一起工作，不需要暂停工作线程。基于标记结果，直接清理对象。
+  
+        由于耗时最长的并发标记和并发清除过程中，垃圾收集线程可以和用户线程一起并发工作。
+  
+        所以总体上来看CMS收集器的内存回收和用户线程是一起并发地执行。
+  
+    * 优缺点
+  
+      * 优点：并发收集低停顿
+  
+      * 缺点：
+  
+        * 并发执行，对CPU资源压力大
+  
+          由于并发进行，CMS收集与应用线程会同时增加对堆内存的占用，也就是说，CMS必须要在老年代堆内存用尽之前完成垃圾回收，否则CMS回收失败时，讲触发担保机制，串行老年代收集器讲会以STW的方式进行一次GC，从而造成较大停顿时间。
+  
+        * 采用的标记清除算法会导致大量碎片
+  
+          标记清除算法无法整理空间碎片，老年代空间会随着应用时长被逐步耗尽，最后将不得不通过担保机制对堆内存进行压缩。CMS也提供了参数-XX:CMSFullGCCsForeCompaction（默认0，即每次都进行内存整理）来指定多少次CMS收集之后，进行一次压缩的Full GC。
+  
+  * 串行GC（Serial Old）/（Serial MSC）
+  
+    * Serial Old是Serial垃圾收集器老年代版本，它同样是个单线程的收集器，使用标记-整理算法，这个收集器也主要是运行在Client模式的java虚拟机默认的老年代垃圾收集器。
+
+* G1 
+
+  * 以前收集器特点：
+    * 年轻代和老年代是各自独立且连续的内存块
+    * 年轻代收集使用单eden+S0+S1进行复制算法
+    * 老年代收集必须扫描整个老年代区域
+    * 都是以尽可能少而快速地执行GC为设计原则
+
+  * G1是什么
+
+    G1是一种服务器端的垃圾收集器，应用在多处理器和大容量内存环境中，在实现高吞吐量的同时，尽可能的满足垃圾收集暂停时间的要求。
+
+    * 特点：
+      * 像CMS收集器一样，能与应用程序线程并发执行
+      * 整理空闲空间更快
+      * 需要更多的时间来预测GC停顿时间
+      * 不希望牺牲大量的吞吐性能
+      * 不需要更大的Java Heap
+
+    G1收集器的设计目标是取代CMS收集器，它同CMS相比，在以下方面表现的更出色：
+
+    ​	G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片
+
+    ​	G1的Stop The World更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间
+
+  * 底层原理
+
+    * Region区域化垃圾收集器
+
+      最大的好处是化整为零，避免全内存扫描，只需要按照区域来进行扫描即可。
+
+    * 回收步骤
+
+    * 4步过程
+
+  * case案例
+
+  * 常用配置参数
+
+    -XX:+UseG1GC -Xmx32g -XX:MaxGCPauseMillis=100
+
+  * 和CMS相比的优势
+
+    * G1不会产生内存碎片
+    * 是可以精确控制停顿。该收集器是把整个堆(新生代、老年代)划分成多个固定大小的区域，每次根据允许停顿的时间去收集垃圾最多的区域。
+
+* 结合项目调参
+
+  * 启动时设置：
+
+    ```java
+    java -server jvm的各种参数 -jar  XXXX.jar(war)
+    ```
+
+#### 10.生产环境服务器变慢了，谈谈诊断思路和性能评估？
+
+* 整机：top
+
+  * load average 看负载的 （一分钟 五分钟 十五分钟） 超过0.6算高了
+  * %CPU
+  * %MEM
+  * 1 展开CPU
+  * q 退出
+  * uptime（精简版）也可以看负载
+
+* CPU：vmstat
+
+  * vmstat -n 2 3  （每2秒取样一次 共取样3次）
+    * procs
+      * r:运行和等待CPU时间片的进程数，原则上1核的cpu的运行队列不要超过2，整个系统的运行队列不能超过总核数的2倍，否则代表系统压力过大。
+      * b:等待资源的进程数，比如正在等待磁盘I/O、网络I/O等。
+
+  * mpstat -P all
+
+* 内存：free
+
+  * free （默认是字节）
+  * free -g （以g为单位）
+  * free -m （以m为单位，常用）
+  * pidstat -p 进程号 -r 采样间隔秒数      （查看指定进程占用的内存情况）
+
+* 硬盘：df
+
+  * df -h (-h human)
+
+* 磁盘IO：iostat（如果找不到，需要安装  yum install -y sysstat）
+
+  * iostat -xdk 2 3 
+  * pidstat -d 2 -p 5101  查看5101线程占用的磁盘IO
+
+* 网络IO：ifstat
+
+#### 12.*（重要） 假如生产环境出现CPU占用过高，请谈谈你的分析思路和定位？
+
+* 结合linux和JDk命令一块分析
+
+* 案例步骤
+
+  * 先用top命令找出CPU占比最高的
+  * ps -ef 或者jps进一步定位，得知是哪一个程序出的问题
+  * 定位到具体线程或者代码
+    * ps -mp 进程 -o THREAD,tid,time
+    * 参数解释：
+      * -m 显示所有的线程
+      * -p pid进程使用cpu的时间
+      * -o 该参数后是用户自定义格式
+
+  * 将需要的线程ID转换为16进制格式（英文小写格式）
+  * jstack 进程ID | grep tid(16进制线程ID小写英文) -A60
+
+#### 13 github的骚操作
+
+* in
+* stars:>400
+* forks:>400
+* as
