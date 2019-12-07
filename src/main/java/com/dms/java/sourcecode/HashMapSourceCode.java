@@ -1,5 +1,7 @@
 package com.dms.java.sourcecode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class HashMapSourceCode {
@@ -33,6 +35,13 @@ public class HashMapSourceCode {
 		
 		
 		System.out.println();
+
+
+		ArrayList<Integer> list = new ArrayList<>();
+		list.toArray();
+
+		Integer[] i = new Integer[30];
+		Arrays.asList(i);
 	}
 
 }

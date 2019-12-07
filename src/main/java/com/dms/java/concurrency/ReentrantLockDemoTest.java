@@ -6,8 +6,8 @@ package com.dms.java.concurrency;
  *
  */
 public class ReentrantLockDemoTest {
-	NotReentrantLockDemo lock = new NotReentrantLockDemo(); // 不可重入锁
-	// ReentrantLockDemo lock = new ReentrantLockDemo(); // 可重入锁
+	//NotReentrantLockDemo lock = new NotReentrantLockDemo(); // 不可重入锁
+	ReentrantLockDemo lock = new ReentrantLockDemo(); // 可重入锁
 	
 	public void print() throws Exception {
 		lock.lock();

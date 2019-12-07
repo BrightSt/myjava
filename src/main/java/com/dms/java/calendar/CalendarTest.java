@@ -3,6 +3,10 @@ package com.dms.java.calendar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * @author dongmingsheng
+ * 日历操作类
+ */
 public class CalendarTest {
 
     public static void main(String[] args) {

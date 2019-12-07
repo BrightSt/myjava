@@ -1,90 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ff3adcf-efb3-478c-9ee7-a75dacebe968" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="551fa488-5b82-456d-b4e4-f10bd382eb77" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_2_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_101tec_zkclient_0_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_47.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lowagie_itext_2_1_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__fr_opensagres_xdocreport_fr_opensagres_xdocreport_itext_extension_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__fr_opensagres_xdocreport_org_apache_poi_xwpf_converter_core_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__fr_opensagres_xdocreport_org_apache_poi_xwpf_converter_pdf_1_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_3_10_6_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jline_jline_0_9_94.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_ooxml_schemas_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_yetus_audience_annotations_0_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/Collection/IterableDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/Collection/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/Collection/TestCl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/Collection/TestIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/OrderNumCreateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/ZkAbstractTemplateLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/ZkClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/ZkDistributedLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/ZkLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/distributed/lock/分布式锁.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/spring/Appconfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/spring/BeanTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/spring/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myjava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/myjava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/calendar/CalendarTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/compare/ComparableTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/compare/ComparatorTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/compare/ComparatorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/compare/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/concurrency/DeakLockDemo$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/concurrency/DeakLockDemo$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/myjava/com/dms/java/concurrency/DeakLockDemo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/calendar/CalendarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/calendar/CalendarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/common/StringDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/common/StringDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/concurrency/ReentrantLockDemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/concurrency/ReentrantLockDemoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/concurrency/java并发编程.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/concurrency/java并发编程.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/sourcecode/HashMapSourceCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/sourcecode/HashMapSourceCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/test/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dms/java/thread/VolatileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dms/java/thread/VolatileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com.dms.java/myjava/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com.dms.java/myjava/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/calendar/CalendarTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/calendar/CalendarTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/common/StringDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/common/StringDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/common/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparableTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparableTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparatorTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparatorTest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/compare/ComparatorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/compare/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/compare/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/compare/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ABADemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ABADemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/AtomicReferenceDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/AtomicReferenceDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/AtomicStampedReferenceDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/AtomicStampedReferenceDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CASDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CASDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CallableDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CallableDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ConcurrentModificationExceptionDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ConcurrentModificationExceptionDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CountDownLatchDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CountDownLatchDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CyclicBarrierDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/CyclicBarrierDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/Data.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeadLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeadLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/DeakLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/HoldLockThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/HoldLockThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/JMM内存模型.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyThreadPoolDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/MyThreadPoolDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/NotReentrantLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/NotReentrantLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ProdConsumer_BlockQueueDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ProdConsumer_BlockQueueDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ProdConsumer_TraditionDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ProdConsumer_TraditionDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReSortSeqDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReSortSeqDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReadWriteLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReadWriteLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockDemoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockDemoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockSynchronizedDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockSynchronizedDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ReentrantLockTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SemaphoreDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SemaphoreDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ShareData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ShareData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ShareResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ShareResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SpinLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SpinLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SyncAndReentrantLockDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SyncAndReentrantLockDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SynchronousQueueDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/SynchronousQueueDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/ThreadPool.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileAtomDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileAtomDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileUseSingleton01.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileUseSingleton01.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileUseSingleton02.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileUseSingleton02.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileVisibleDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/VolatileVisibleDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/blockingqueue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/deadlockjps.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/deadlockstack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/java并发编程.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/threadpoolflow.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/volatile指令序列示意图.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/concurrency/volatile读.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/ArrayQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/ArrayQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLink$DNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLink$DNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLinkTest$Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLinkTest$Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLinkTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/DoubleLinkTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/GeneralArrayStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/GeneralArrayStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/datastructuresandalgorithms/数据结构与算法.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/io/ByteArrayInputStreamTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/io/ByteArrayInputStreamTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/io/ByteArrayOutputStreamTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/io/ByteArrayOutputStreamTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/io/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jmm/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/CMS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCCompare.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCOverheadDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCOverheadDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCRootDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCRootDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GCRoots.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GC术语.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/GC术语2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HeapOOM$OOMObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HeapOOM$OOMObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HeapOOM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HeapOOM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HelloGC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/HelloGC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JVM.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JVM相关.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaHeapSpaceDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaHeapSpaceDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackOOM$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackOOM$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackOOM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackOOM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackSOF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/JavaVMStackSOF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/ParellelGC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/ParellelScGC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/PrintTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/PrintTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/ReferenceQueueDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/ReferenceQueueDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/SerialGC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/SoftReferenceDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/SoftReferenceDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/StackOverflowErrorDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/StackOverflowErrorDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/Throwable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/UnableCreateNewThreadDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/UnableCreateNewThreadDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/WeakHashMapDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/WeakHashMapDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/ToClass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/classCompose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/classformat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/magicNumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/classloader/类加载器.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/copy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/fullgc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/fullgc1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/gc-overhead-limit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/gcserver.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/jinfo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/jpsl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/mark-compact.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/mark-sweep.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/nprocconf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/printcommandlineflags.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/printflagsfinal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/printflagsinitial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/ulimitu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/unablecreate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/jvm/图集.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/cglib/Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/cglib/Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/cglib/DaoProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/cglib/DaoProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/cglib/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/dynamicproxy/ProxyFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/dynamicproxy/ProxyFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/Bussiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/Bussiness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/BussinessInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/BussinessInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/BussinessProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/staticproxy/BussinessProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/proxy/代理.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/sourcecode/HashMapSourceCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/sourcecode/HashMapSourceCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/test/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dms/java/thread/VolatileTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dms/java/thread/VolatileTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dms/java/CglibTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dms/java/CglibTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dms/java/proxy/dynamicproxy/DynamicProxyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dms/java/proxy/dynamicproxy/DynamicProxyTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dms/java/proxy/staticproxy/BussinessProxyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dms/java/proxy/staticproxy/BussinessProxyTest.class" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/Object.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="554" column="19" selection-start-line="554" selection-start-column="19" selection-end-line="554" selection-end-column="19" />
-              <folding>
-                <element signature="e#5748#5749#0" expanded="true" />
-                <element signature="e#5784#5785#0" expanded="true" />
-                <element signature="e#10065#10066#0" expanded="true" />
-                <element signature="e#10148#10149#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/dms/java/concurrency/DeakLockDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-              <folding>
-                <element signature="e#198#199#0" expanded="true" />
-                <element signature="e#231#232#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/Integer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6094">
-              <caret line="308" column="26" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
-              <folding>
-                <element signature="e#7967#7968#0" expanded="true" />
-                <element signature="e#8013#8014#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67034">
-              <caret line="3152" column="48" selection-start-line="3152" selection-start-column="48" selection-end-line="3152" selection-end-column="48" />
-              <folding>
-                <element signature="e#4677#4678#0" expanded="true" />
-                <element signature="e#4714#4715#0" expanded="true" />
-                <element signature="e#5687#5688#0" expanded="true" />
-                <element signature="e#5750#5751#0" expanded="true" />
-                <element signature="e#113343#113344#0" expanded="true" />
-                <element signature="e#113370#113371#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/util/ArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2508">
-              <caret line="139" column="7" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/myjava$VolatileTest.ic" NAME="VolatileTest Coverage Results" MODIFIED="1570522043256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.dms.java.thread.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="209" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -92,89 +240,55 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/dms/java/concurrency/DeakLockDemo.java" />
-      </list>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-91" />
-    <option name="y" value="189" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectId" id="1UT6wDTPLgbkNgIvQ8CeRpdtkyy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="myjava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myjava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myjava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myjava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="dms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myjava" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myjava" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="dms" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546588813580" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570528128261" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gitee/Spring-Framework" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.43284938" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="DeakLockDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.dms.java.concurrency.DeakLockDemo" />
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dms.java.distributed.lock.Client" />
+      <module name="myjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dms.java.distributed.lock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadWriteLockDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dms.java.concurrency.ReadWriteLockDemo" />
       <module name="myjava" />
       <extension name="coverage">
         <pattern>
@@ -186,136 +300,226 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpinLockDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dms.java.concurrency.SpinLockDemo" />
+      <module name="myjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dms.java.concurrency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dms.java.spring.Test" />
+      <module name="myjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dms.java.spring.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZkClientTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.dms.java.distributed.lock.ZkClientTest" />
+      <module name="myjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dms.java.distributed.lock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DeakLockDemo" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.ZkClientTest" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.ReadWriteLockDemo" />
+        <item itemvalue="Application.SpinLockDemo" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9ff3adcf-efb3-478c-9ee7-a75dacebe968" name="Default Changelist" comment="" />
-      <created>1543456127884</created>
+      <changelist id="551fa488-5b82-456d-b4e4-f10bd382eb77" name="Default Changelist" comment="" />
+      <created>1561188387110</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1543456127884</updated>
-      <workItem from="1543456129452" duration="3427000" />
-      <workItem from="1546579720598" duration="3111000" />
+      <updated>1561188387110</updated>
+      <workItem from="1561188388845" duration="739000" />
+      <workItem from="1561467379432" duration="645000" />
+      <workItem from="1566917947109" duration="634000" />
+      <workItem from="1566959169836" duration="14000" />
+      <workItem from="1568298460035" duration="38000" />
+      <workItem from="1568805374426" duration="2173000" />
+      <workItem from="1570518456258" duration="2308000" />
+      <workItem from="1570520840553" duration="5401000" />
+      <workItem from="1570529375086" duration="9000" />
+      <workItem from="1570690765061" duration="2809000" />
+      <workItem from="1575368476665" duration="6255000" />
+      <workItem from="1575378740191" duration="3390000" />
+      <workItem from="1575435830362" duration="141000" />
+      <workItem from="1575552308649" duration="1857000" />
+      <workItem from="1575557133581" duration="10000" />
+      <workItem from="1575730332024" duration="5850000" />
     </task>
-    <task id="LOCAL-00001" summary="死锁案例">
-      <created>1546581622747</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1546581622747</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6538000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <layout>
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25266525" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Database Changes" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="right" id="Theme Preview" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" visible="true" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="死锁案例" />
-    <option name="LAST_COMMIT_MESSAGE" value="死锁案例" />
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Notifications" timestamp="1575730361552">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Notifications/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575730361552" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1575737338781">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575737338781" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1575553137758">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575553137758" />
+    <state width="1493" height="271" key="GridCell.Tab.0.bottom" timestamp="1575738943649">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575738943649" />
+    <state width="1493" height="271" key="GridCell.Tab.0.center" timestamp="1575738943648">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575738943648" />
+    <state width="1493" height="271" key="GridCell.Tab.0.left" timestamp="1575738943648">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575738943648" />
+    <state width="1493" height="271" key="GridCell.Tab.0.right" timestamp="1575738943648">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575738943648" />
+    <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1575736106200">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575736106200" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1575435951751">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575435951751" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575736082873">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1575736082873" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="554" column="19" selection-start-line="554" selection-start-column="19" selection-end-line="554" selection-end-column="19" />
-          <folding>
-            <element signature="e#5748#5749#0" expanded="true" />
-            <element signature="e#5784#5785#0" expanded="true" />
-            <element signature="e#10065#10066#0" expanded="true" />
-            <element signature="e#10148#10149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6094">
-          <caret line="308" column="26" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
-          <folding>
-            <element signature="e#7967#7968#0" expanded="true" />
-            <element signature="e#8013#8014#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67034">
-          <caret line="3152" column="48" selection-start-line="3152" selection-start-column="48" selection-end-line="3152" selection-end-column="48" />
-          <folding>
-            <element signature="e#4677#4678#0" expanded="true" />
-            <element signature="e#4714#4715#0" expanded="true" />
-            <element signature="e#5687#5688#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-            <element signature="e#113343#113344#0" expanded="true" />
-            <element signature="e#113370#113371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Java/jdk1.8.0_144/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="139" column="7" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dms/java/concurrency/DeakLockDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#198#199#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.43284938" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>myjava</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.43284938" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: org.apache.httpcomponents:httpcore:4.4.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.43284938" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

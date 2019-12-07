@@ -9,6 +9,9 @@ public class StringDemo {
 
 	public static void main(String[] args) {
 		StringDeeper();
+		
+		String a = "1565167";
+		System.out.println(   a = a.substring(0,3)+"****"+a.substring(7));
 	}
 	
 	/**
@@ -84,5 +87,14 @@ public class StringDemo {
 		
 		
 	}
+	
+	public static void replaceDemo() {
+		String name = "江苏百盛信息科技有限公司";
+		String name2 = name.substring(4).replaceAll(".", "*");
+		String name3 = name.substring(0,4)+name2;
+		System.out.println(name3);
+	}
+	
+	
 
 }
