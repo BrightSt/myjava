@@ -10,9 +10,13 @@ import java.util.List;
 public class Test {
 
 	public static void main(String[] args) {
-		Calendar date = Calendar.getInstance();
-		String year = String.valueOf(date.get(Calendar.YEAR));
-		System.out.println(year);
+		Long tt = 100000L;
+		int bb = 333;
+		int num = (int) (tt/bb);
+		System.out.println(num);
+
+
+		System.out.println(301*333);
 
 	}
 }
