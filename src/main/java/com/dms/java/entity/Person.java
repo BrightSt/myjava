@@ -2,6 +2,8 @@ package com.dms.java.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.util.List;
+import lombok.Data;
 
 /**
  * @author dongms
@@ -10,17 +12,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @description 说明：
  * @date 2020/6/12 14:42
  */
+@Data
 @TableName("T_PERSON")
 public class Person {
 
     @TableField("name")
     private String name;
 
-    public String getName () {
-        return name;
-    }
+    private List<String> id;
 
-    public void setName (String name) {
-        this.name = name;
-    }
 }

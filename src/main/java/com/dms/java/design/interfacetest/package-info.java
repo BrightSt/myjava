@@ -4,7 +4,6 @@
  * @description 说明：
  * @date 2020/6/16 18:57
  * @version V1.0
- * @Copyright © 2017 - 2019 江苏金智教育信息股份有限公司
  */
 
 package com.dms.java.design.interfacetest;
