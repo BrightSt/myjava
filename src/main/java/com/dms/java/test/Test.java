@@ -20,10 +20,3 @@ public class Test {
 
 	}
 }
-
-
-class Test11{
-	static {
-		System.out.println(1111);
-	}
-}
