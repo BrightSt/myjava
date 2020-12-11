@@ -1,14 +1,12 @@
 package com.dms.java.datastructuresandalgorithms;
 
-import java.util.LinkedList;
+import com.dms.java.utils.BigDecimalUtils;
 
 public class Test {
 	public static void main(String[] args) {
-		int[] iArray = new int[12];
-		int i = 0;
-		iArray[i++] = 12;
-		
-		System.out.println(iArray[1]);
+		System.out.println(BigDecimalUtils.divideByTwoDecimal(55,60));
+		System.out.println(BigDecimalUtils.divideByTwoDecimal(57,60));
+		System.out.println(BigDecimalUtils.divideByTwoDecimal(52,60));
 	}
 
 }

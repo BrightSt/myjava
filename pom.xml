@@ -3,7 +3,7 @@
   <groupId>com.dms.java</groupId>
   <artifactId>myjava</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
+  
     <dependencies>
 	  	<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -69,22 +69,29 @@
 			<version>0.11</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatisplus-spring-boot-starter -->
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatisplus-spring-boot-starter</artifactId>
-			<version>1.0.5</version>
-		</dependency>
+			<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.12</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus</artifactId>
+				<version>3.1.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.9</version>
+			</dependency>
 
 
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/lib/ojdbc6-11.2.0.3.jar</systemPath>
-		</dependency>
-	</dependencies>
+
+		</dependencies>
   
   	<build>
 	    <plugins>
